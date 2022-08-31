@@ -2,7 +2,7 @@ from tkinter import *
 
 class App():
 
-  def __init__(self, master=None, child=None):
+  def __init__(self, master=None):
 
     self.convidados = [[], []]
     self.men = {}
