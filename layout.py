@@ -7,18 +7,13 @@ class App():
     self.convidados = [[], []]
     self.men = {}
     self.women = {}
-    
+
     self.fonte = ("Verdana", "10")
     
     self.master = Frame(master)
     self.master['padx'] = 20
     self.master['pady'] = 15
     self.master.pack()
-
-    self.child = Frame(child)
-    self.child['padx'] = 5
-    self.child['pady'] = 5
-    self.child.pack()
 
   def main_layout(self):
   
@@ -36,41 +31,43 @@ class App():
     self.txtnome['font'] = self.fonte
     self.txtnome.pack()
 
-    self.lblgenero = Label(self.master, text='Genero:', font=self.fonte, width=50)
+    self.lblgenero = Label(self.master, text='Genero:(M/F)', font=self.fonte, width=10)
     self.lblgenero.pack()
-    self.c1 = Checkbutton(self.master, text='Homem',variable=self.txtnome.get(), onvalue=1, offvalue=0)
-    self.c1.pack()
-    self.c2 = Checkbutton(self.master, text='Mulher',variable=self.txtnome.get(), onvalue=1, offvalue=0)
-    self.c2.pack()
- 
+    self.txtgenero = Entry(self.master)
+    self.txtgenero['width'] = 5
+    self.txtgenero['font'] = self.fonte
+    self.txtgenero.pack()
     
-    self.btnInserir = Button(self.child, text='Inserir', font=self.fonte, width=10)
+    
+    self.btnInserir = Button(self.master, text='Inserir', font=self.fonte, width=10)
     self.btnInserir['command'] = self.add_guest
     self.btnInserir.pack()
     
-    self.btnTodos = Button(self.child, text='Buscar Todos', font=self.fonte, width=10)
+    self.btnTodos = Button(self.master, text='Buscar Todos', font=self.fonte, width=10)
     self.btnTodos['command'] = self.show_invited_ppl
     self.btnTodos.pack()
 
-    self.btnMen = Button(self.child, text='Homens Convidados', font=self.fonte, width=15)
+    self.btnMen = Button(self.master, text='Homens Convidados', font=self.fonte, width=15)
     self.btnMen['command'] = self.show_invited_men
     self.btnMen.pack()
 
-    self.btnWomen = Button(self.child, text='Mulheres Convidadas', font=self.fonte, width=15)
+    self.btnWomen = Button(self.master, text='Mulheres Convidadas', font=self.fonte, width=15)
     self.btnWomen['command'] = self.show_invited_women
     self.btnWomen.pack()
     
   def add_guest(self):
     
     chave = self.txtnome.get()    #### Gerando entradas duplicadas buscando entender porquê ####
+                                  #### resolver a limpeza do buffer ####
+    if self.txtgenero.get() == 'm':
+      self.txtnome.delete(0, END)
+      self.men[chave] = 'confimado'
     
-    if self.c1:
-      self.men[chave] = 'confimado' 
+    elif self.txtgenero.get() == 'f':
       self.txtnome.delete(0, END)
-      
-    elif self.c2:
       self.women[chave] = 'confirmado'
-      self.txtnome.delete(0, END)
+
+    self.txtgenero.delete(0, END)
     
     for key in self.men.keys(): self.convidados[0].append(key)
     for key in self.women.keys(): self.convidados[1].append(key)

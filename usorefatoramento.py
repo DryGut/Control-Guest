@@ -1,7 +1,7 @@
 from refatoramento import ListaDeConvidados
 
-lista = ListaDeConvidados()
-lista.add_guest()
+minha_lista_de_convidados = ListaDeConvidados()
+minha_lista_de_convidados.add_guest()
 
 show = input(" Escolha a Opcao:\n"
              "\n [ t ] - para imprimir todos"
@@ -13,11 +13,11 @@ mostrar = True
 
 while mostrar:
   if show == 't':
-    lista.show_all_guests()
+    minha_lista_de_convidados.show_all_guests()
     break
   elif show == 'm':
-    lista.show_men_guests()
+    minha_lista_de_convidados.show_men_guests()
     break
   elif show == 'w':
-    lista.show_women_guests()
+    minha_lista_de_convidados.show_women_guests()
     break
