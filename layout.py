@@ -62,10 +62,10 @@ class App():
     
   def add_guest(self):
     
-    chave = self.txtnome.get()
+    chave = self.txtnome.get()    #### Gerando entradas duplicadas buscando entender porquê ####
     
     if self.c1:
-      self.men[chave] = 'confimado'
+      self.men[chave] = 'confimado' 
       self.txtnome.delete(0, END)
       
     elif self.c2:
@@ -111,7 +111,6 @@ app = App(root)
 root.title("Convidados")
 root.geometry('450x290')
 
-##### Cria o menu de navegação do Sistema #####
 
 menu = Menu(root)
 root.config(menu=menu)
