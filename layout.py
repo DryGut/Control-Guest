@@ -58,13 +58,12 @@ class App():
   def add_guest(self):
     
     chave = self.txtnome.get()    #### Gerando entradas duplicadas buscando entender porquê ####
-                                  #### resolver a limpeza do buffer ####
+    self.txtnome.delete(0, END)   #### resolver a limpeza do buffer ####
+    
     if self.txtgenero.get() == 'm':
-      self.txtnome.delete(0, END)
-      self.men[chave] = 'confimado'
+      self.men[chave] = 'confirmado'
     
     elif self.txtgenero.get() == 'f':
-      self.txtnome.delete(0, END)
       self.women[chave] = 'confirmado'
 
     self.txtgenero.delete(0, END)
@@ -78,9 +77,8 @@ class App():
     top.title('Convidados')
     top.geometry('350x300')
 
-    label = Label(top, text=self.convidados)
+    label = Label(top, text=' '.join(item for value in self.convidados for item in value))
     label.pack()
-    print(self.convidados)
 
   def show_invited_men(self):
 

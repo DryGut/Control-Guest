@@ -12,7 +12,7 @@ class ListaDeConvidados():
       man_or_woman = str(input('for woman or man press (w/m)?: '))
     
       if man_or_woman == 'm':
-        self.men[guest] = 'confimado'
+        self.men[guest] = 'confirmado'
       else:
         self.women[guest] = 'confirmado'
     
