@@ -57,8 +57,8 @@ class App():
     
   def add_guest(self):
     
-    chave = self.txtnome.get()    #### Gerando entradas duplicadas buscando entender porquê ####
-    self.txtnome.delete(0, END)   #### resolver a limpeza do buffer ####
+    chave = self.txtnome.get()    #### Gerando entradas duplicadas sempre com o primeiro elemento inserido ####
+    self.txtnome.delete(0, END)   #### Buscando entender porquê, resolver a limpeza do buffer? ####
     
     if self.txtgenero.get() == 'm':
       self.men[chave] = 'confirmado'
